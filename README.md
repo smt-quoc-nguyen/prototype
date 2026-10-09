@@ -50,3 +50,5 @@ npx playwright install chromium # Cài một lần
 npm run test:e2e
 npm run build
 ```
+
+Ảnh chụp từ kiểm tra E2E được lưu cùng kết quả từng bài trong `test-results/`.

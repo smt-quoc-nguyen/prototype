@@ -426,30 +426,6 @@
   border-top: 1px solid #e3eae5;
   padding-top: 20px;
 }
-.sandbox-progress {
-  display: flex;
-  gap: 9px;
-  align-items: center;
-  padding: 13px 0;
-  border-bottom: 1px solid #e8eee9;
-  font-size: 12px;
-}
-.sandbox-progress > span {
-  color: #99a69b;
-}
-.sandbox-progress > strong {
-  flex: 1;
-}
-.sandbox-progress > small {
-  color: #849084;
-  font-size: 10px;
-}
-.sandbox-progress.completed > span {
-  color: #499661;
-}
-.sandbox-progress.waiting {
-  color: #99762a;
-}
 .sandbox-actions > strong {
   font-size: 13px;
 }

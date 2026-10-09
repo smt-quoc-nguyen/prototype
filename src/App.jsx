@@ -26,10 +26,6 @@ import {
   ExternalLink,
   Zap,
   ShieldCheck,
-  ArrowDown,
-  ArrowUp,
-  Trash2,
-  Save,
   Send,
   Activity,
   MapPin,
@@ -37,7 +33,7 @@ import {
   Info,
   Menu,
 } from "lucide-react";
-import { USERS, TYPES, id } from "./engine.js";
+import { USERS, TYPES } from "./engine.js";
 import {
   subscribe,
   getSnapshot,
@@ -257,7 +253,6 @@ export default function App() {
         }
       }
     }
-    if (!root) return;
     document.addEventListener("keydown", keydown);
     return () => {
       document.removeEventListener("keydown", keydown);
@@ -1563,14 +1558,6 @@ export default function App() {
                 ticket đang xử lý tiếp tục dùng quy trình của lần tạo. Mỗi loại
                 ticket chỉ dùng một quy trình đã xuất bản.
               </p>
-              <a
-                className="text-button"
-                href="/workflow-prototype/legacy.html"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Mở prototype workflow gốc <ExternalLink size={15} />
-              </a>
             </section>
           )}
         </main>

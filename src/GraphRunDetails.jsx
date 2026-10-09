@@ -1,4 +1,3 @@
-import React from "react";
 import { Check, Clock3, Circle, AlertCircle, RotateCcw, X } from "lucide-react";
 import {
   businessRunSteps,

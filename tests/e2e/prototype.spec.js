@@ -59,7 +59,7 @@ test("three apps: realtime approval, sequential work orders, reload persistence"
   });
   await expect(inspect).toBeVisible();
   await tech.screenshot({
-    path: "artifacts/maintainer-inspection.png",
+    path: test.info().outputPath("maintainer-inspection.png"),
     fullPage: true,
   });
   await finish(inspect);
@@ -82,7 +82,7 @@ test("three apps: realtime approval, sequential work orders, reload persistence"
     .click();
   await expect(pms.locator(".run-card .badge.completed")).toBeVisible();
   await pms.screenshot({
-    path: "artifacts/pms-run-completed.png",
+    path: test.info().outputPath("pms-run-completed.png"),
     fullPage: true,
   });
   await pms
@@ -201,10 +201,10 @@ test("PMS templates, N-N work orders, grouping and responsive layout", async ({
     has: page.getByRole("button", { name: "Nhóm phòng họp 2 ticket", exact: true }),
   });
   await expect(group.locator(".ticket-child-row")).toHaveCount(2);
-  await page.screenshot({ path: "artifacts/ticket-groups-desktop.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("ticket-groups-desktop.png"), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
-  await page.screenshot({ path: "artifacts/ticket-groups-mobile.png", fullPage: true, animations: "disabled" });
+  await page.screenshot({ path: test.info().outputPath("ticket-groups-mobile.png"), fullPage: true, animations: "disabled" });
   await page.setViewportSize({ width: 1440, height: 1000 });
   const toggle = group.getByRole("button", { name: "Nhóm phòng họp 2 ticket", exact: true });
   await toggle.click();
@@ -266,7 +266,7 @@ test("PMS templates, N-N work orders, grouping and responsive layout", async ({
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/?app=tenant");
   await page.screenshot({
-    path: "artifacts/tenant-mobile.png",
+    path: test.info().outputPath("tenant-mobile.png"),
     fullPage: true,
   });
   const overflow = await page.evaluate(

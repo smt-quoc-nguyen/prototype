@@ -8,7 +8,7 @@ Bản React dùng giao diện bước nghiệp vụ và **graph interpreter** ch
 
 PMS → **Quy trình xử lý** mở danh sách bước, không mở canvas. Xem [UX.md](../UX.md). Model nghiệp vụ trong `maintenance-workflow.js` chuyển approval, work order, notification, nhóm parallel, nhóm condition và completion thành graph. Mỗi công việc mặc định có bước chờ hoàn thành gắn đúng ID ở phía sau; compiler tạo đường nối theo thứ tự danh sách và các nhánh. Các node phụ trợ không hiển thị như bước người dùng phải cấu hình.
 
-Canvas React Flow trong `GraphBuilder.jsx` được giữ như mã tham khảo; các phần Condition, Parallel, variables, bindings và Automation bên dưới mô tả schema/interpreter còn hỗ trợ cho dữ liệu trước đây. Giao diện mới chỉ mở cấu hình song song và điều kiện trạng thái bằng form; variables, binding tự do và Automation tổng quát không được mở như tùy chọn kỹ thuật. Graph không chuyển đổi đầy đủ được phải giữ nguyên, không tự bỏ cấu hình.
+Canvas React Flow cũ đã được gỡ khỏi project; các phần Condition, Parallel, variables, bindings và Automation bên dưới mô tả schema/interpreter còn hỗ trợ cho dữ liệu trước đây. Giao diện mới chỉ mở cấu hình song song và điều kiện trạng thái bằng form; variables, binding tự do và Automation tổng quát không được mở như tùy chọn kỹ thuật. Graph không chuyển đổi đầy đủ được phải giữ nguyên, không tự bỏ cấu hình.
 
 Lưu nháp quy trình đã xuất bản giữ riêng `workflow.draft` và không ngừng bản live. Xuất bản thay bản live; lần chạy cũ giữ snapshot. Chạy thử dùng reducer/interpreter trên state riêng trong bộ nhớ, không gọi browser-store dispatch, không lưu dữ liệu và không gửi thông báo thật.
 

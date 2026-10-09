@@ -457,8 +457,7 @@ h1 {
   background: #eaf1fc;
   color: #698fc0;
 }
-.tone-3,
-.violet {
+.tone-3 {
   background: #f1edfc;
   color: #9176b8;
 }
@@ -1152,149 +1151,6 @@ input[type="checkbox"] {
 .template-card > .btn {
   width: 100%;
 }
-.builder-toolbar {
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.builder-toolbar > .actions {
-  margin-left: auto;
-}
-.builder-toolbar > select {
-  max-width: 280px;
-}
-.builder-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 305px;
-  gap: 20px;
-  align-items: start;
-}
-.workflow-canvas {
-  background: #f0f4f2;
-  background-image: radial-gradient(#cddbd2 1px, transparent 1px);
-  background-size: 18px 18px;
-  border: 1px solid #dfe9e2;
-  border-radius: 12px;
-  min-height: 650px;
-  overflow: auto;
-}
-.canvas-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 19px 21px;
-  gap: 10px;
-  color: #789582;
-  background: #f6f9f6b8;
-  border-bottom: 1px solid #e2ebe4;
-}
-.canvas-heading span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11px;
-  font-weight: 600;
-}
-.canvas-heading small {
-  font-size: 9px;
-}
-.flow-column {
-  padding: 35px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.flow-node {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 360px;
-  max-width: 100%;
-  border: 1px solid #dce6df;
-  background: white;
-  border-radius: 11px;
-  padding: 17px;
-  text-align: left;
-  box-shadow: 0 4px 12px #31513706;
-  position: relative;
-}
-.flow-node.selected {
-  border-color: #62a98a;
-  box-shadow: 0 0 0 3px #5d9f8214;
-}
-.flow-node:hover {
-  border-color: #7fb498;
-}
-.flow-node.trigger {
-  border-left: 3px solid #409b72;
-}
-.node-icon {
-  width: 39px;
-  height: 39px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  flex: none;
-}
-.flow-node small {
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.7px;
-  color: #97aba0;
-  display: block;
-  margin-bottom: 4px;
-}
-.flow-node strong {
-  font-size: 11px;
-  display: block;
-  color: #597160;
-}
-.flow-node em {
-  font-size: 9px;
-  color: #a9b8ad;
-  display: block;
-  font-style: normal;
-  margin-top: 4px;
-}
-.node-index {
-  font-size: 9px;
-  color: #b2c0b5;
-  margin-left: auto;
-}
-.flow-connector {
-  height: 29px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #abc4b2;
-  position: relative;
-}
-.flow-connector::before {
-  content: "";
-  height: 100%;
-  border-left: 1px solid #aec9b7;
-  position: absolute;
-}
-.flow-connector svg {
-  z-index: 1;
-  background: #f0f4f2;
-}
-.canvas-end {
-  font-size: 9px;
-  color: #a6b8ab;
-  margin-top: 27px;
-}
-.node-panel .section-heading h2 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-}
-.node-panel-content {
-  padding: 19px;
-}
 .field {
   display: block;
   margin-bottom: 18px;
@@ -1344,57 +1200,15 @@ input[type="checkbox"] {
   flex: none;
   margin-top: 2px;
 }
-.recipient-picker,
 .ticket-picker {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 14px;
   margin: 15px 0;
 }
-.recipient-picker legend,
 .ticket-picker legend {
   font-size: 10px;
   color: #87a18c;
-}
-.recipient-picker label {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 8px 0;
-  font-size: 11px;
-  color: #7c9782;
-}
-.node-tools {
-  display: flex;
-  gap: 6px;
-  margin-top: 20px;
-}
-.node-tools .btn {
-  font-size: 10px;
-  padding: 8px;
-}
-.node-tools .icon-btn {
-  margin-left: auto;
-}
-.add-node {
-  border-top: 1px solid var(--border);
-  margin-top: 25px;
-  padding-top: 20px;
-}
-.add-node h3 {
-  font-size: 10px;
-  color: #8ba291;
-  margin-bottom: 12px;
-}
-.add-node select {
-  width: 100%;
-  margin-bottom: 10px;
-}
-.add-node .btn {
-  width: 100%;
-}
-.builder-note {
-  margin-top: 20px;
 }
 .runs-list {
   display: flex;
@@ -1842,12 +1656,6 @@ input[type="checkbox"] {
   .template-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .builder-layout {
-    grid-template-columns: minmax(0, 1fr) 280px;
-  }
-  .flow-column {
-    padding: 30px 20px;
-  }
   .metrics {
     gap: 12px;
   }
@@ -1925,23 +1733,8 @@ input[type="checkbox"] {
   .hero h2 {
     font-size: 21px;
   }
-  .builder-layout {
-    grid-template-columns: 1fr;
-  }
-  .node-panel {
-    order: -1;
-  }
-  .node-panel-content {
-    display: block;
-  }
   .order-grid {
     grid-template-columns: 1fr;
-  }
-  .builder-toolbar {
-    flex-wrap: wrap;
-  }
-  .builder-toolbar > .actions {
-    margin-left: 0;
   }
   .notification-settings {
     flex-wrap: wrap;
@@ -2075,26 +1868,6 @@ input[type="checkbox"] {
   }
   .modal form {
     padding: 20px;
-  }
-  .builder-toolbar > .actions {
-    flex-wrap: wrap;
-  }
-  .builder-toolbar .btn {
-    font-size: 10px;
-    padding: 8px;
-  }
-  .canvas-heading {
-    flex-wrap: wrap;
-    padding: 15px;
-  }
-  .flow-column {
-    padding: 25px 17px;
-  }
-  .flow-node {
-    padding: 14px;
-  }
-  .node-panel-content {
-    padding: 17px;
   }
   .guide {
     padding: 22px;

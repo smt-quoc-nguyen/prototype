@@ -87,10 +87,10 @@ test("nontechnical builder supports custom steps, reorder, draft reload and an i
   await expect(sandbox).toContainText("Quy trình hoàn tất. Tenant và PMS đã nhận kết quả.");
   const state = await snapshot(page);
   expect({ tickets: state.tickets.length, orders: state.workOrders.length, notifications: state.notifications.length, runs: state.runs.length }).toEqual({ tickets: 0, orders: 0, notifications: 0, runs: 0 });
-  await page.screenshot({ path: "artifacts/workflow-simple-desktop.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("workflow-simple-desktop.png"), fullPage: true });
   await page.getByRole("button", { name: "Đóng chạy thử", exact: true }).click();
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({ path: "artifacts/workflow-simple-mobile.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("workflow-simple-mobile.png"), fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   expect(errors).toEqual([]);
 });
@@ -131,7 +131,7 @@ test("published custom workflow runs across Tenant, PMS and Maintainer with exac
   await expect(page.locator(".run-card .badge.completed")).toBeVisible();
   await expect(page.locator(".run-card")).toContainText("Kiểm tra phòng họp");
   await expect(page.locator(".run-card pre:visible")).toHaveCount(0);
-  await page.screenshot({ path: "artifacts/workflow-simple-run.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("workflow-simple-run.png"), fullPage: true });
 });
 
 test("editing a live draft keeps the published trigger active until explicit publication", async ({ page, context }) => {

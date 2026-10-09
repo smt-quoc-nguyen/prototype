@@ -66,9 +66,9 @@ test("nested parallel editor persists, sandbox joins all jobs, and real apps res
   await expect(rootSteps(page)).toHaveCount(2);
   await open(rootSteps(page).first());
   await open(rootSteps(page).first().locator(":scope > .step-card-form > .step-branches > [data-testid=workflow-branch]").nth(1).locator(":scope > [data-testid=workflow-step]").first());
-  await page.screenshot({ path: "artifacts/workflow-parallel-desktop.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("workflow-parallel-desktop.png"), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({ path: "artifacts/workflow-parallel-mobile.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("workflow-parallel-mobile.png"), fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole("button", { name: "Chạy thử quy trình", exact: true }).click();
@@ -106,7 +106,7 @@ test("nested parallel editor persists, sandbox joins all jobs, and real apps res
   await page.goto("/?app=pms&view=runs");
   await expect(page.locator(".run-card .badge.completed")).toBeVisible();
   await expect(page.locator(".workflow-business-step.waiting")).toHaveCount(0);
-  await page.screenshot({ path: "artifacts/workflow-parallel-run.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("workflow-parallel-run.png"), fullPage: true });
   expect(errors).toEqual([]);
 });
 
@@ -134,7 +134,7 @@ test("status UI offers both waiting and immediate checks, uses live state, and s
   const falseBranch = checking.getByTestId("workflow-branch").nth(1);
   await falseBranch.locator(":scope > .step-branch-add").getByRole("button", { name: "Thêm công việc", exact: true }).click();
   await job(falseBranch.locator(":scope > [data-testid=workflow-step]").first(), "Công việc nhánh bị bỏ qua");
-  await page.screenshot({ path: "artifacts/workflow-status-desktop.png", fullPage: true });
+  await page.screenshot({ path: test.info().outputPath("workflow-status-desktop.png"), fullPage: true });
   await page.getByRole("button", { name: "Chạy thử quy trình", exact: true }).click();
   const sandbox = page.getByTestId("workflow-sandbox");
   await expect(sandbox.locator(".sandbox-work")).toHaveCount(1);
