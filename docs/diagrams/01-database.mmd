@@ -1,0 +1,68 @@
+erDiagram
+    TICKET_GROUP o|--o{ TICKET : "gom nhóm hiển thị"
+    TICKET ||--o{ TICKET_WORK_ORDER : "liên kết"
+    WORK_ORDER ||--|{ TICKET_WORK_ORDER : "liên kết"
+    WORK_ORDER_TEMPLATE o|--o{ WORK_ORDER : "tạo từ mẫu hoặc tự nhập"
+    WORKFLOW ||..o{ WORKFLOW_RUN : "nguồn cấu hình được chụp lại"
+    TICKET ||--o| WORKFLOW_RUN : "một lần xử lý tự động"
+    WORKFLOW_RUN o|--o{ WORK_ORDER : "giao việc tự động"
+    TICKET o|--o{ NOTIFICATION : "cập nhật yêu cầu"
+    WORK_ORDER o|--o{ NOTIFICATION : "cập nhật công việc"
+    TICKET_GROUP {
+        string id PK
+        string name "tên nhóm"
+    }
+    TICKET {
+        string id PK
+        string title "tên yêu cầu"
+        string type "loại yêu cầu"
+        string status "trạng thái xử lý"
+        string customer "người gửi"
+        string groupId FK "có thể để trống"
+    }
+    TICKET_WORK_ORDER {
+        string ticketId PK,FK
+        string workOrderId PK,FK
+    }
+    WORK_ORDER {
+        string id PK
+        string title "tên công việc"
+        string status "trạng thái công việc"
+        json assignees "người nhận việc"
+        json checklist "nội dung và đã tick hay chưa"
+        string templateId FK "có thể để trống"
+        string runId FK "trống khi tạo thủ công"
+    }
+    WORK_ORDER_TEMPLATE {
+        string id PK
+        string name "tên mẫu"
+        json checklist "checklist mẫu"
+        int responseTimeSLA "phút phản hồi"
+        int processTimeSLA "phút hoàn thành"
+    }
+    WORKFLOW {
+        string id PK
+        string name "tên quy trình"
+        string triggerType "loại ticket áp dụng"
+        int version "phiên bản"
+        boolean published "đang áp dụng hay chưa"
+        json business "cần duyệt và danh sách bước"
+        json draft "bản chỉnh sửa chưa áp dụng"
+    }
+    WORKFLOW_RUN {
+        string id PK
+        string ticketId FK
+        json workflow "bản chụp quy trình lúc tạo ticket"
+        string status "đang chờ, hoàn tất, đã dừng hoặc lỗi"
+        json nodeStates "tiến độ từng bước"
+    }
+    NOTIFICATION {
+        string id PK
+        string recipient "người nhận"
+        string title "tiêu đề"
+        string body "nội dung nếu có"
+        json channels "trong app, trình duyệt"
+        boolean read "đã đọc hay chưa"
+        string ticketId FK "có thể để trống"
+        string workOrderId FK "có thể để trống"
+    }

@@ -1,0 +1,42 @@
+sequenceDiagram
+    actor T as Tenant
+    actor P as PMS
+    actor M as Maintainer
+    participant A as Ứng dụng
+    T->>A: Gửi yêu cầu
+    A->>A: Lưu ticket, chọn quy trình theo loại và giữ bản chụp
+    alt Chưa có quy trình áp dụng
+        A-->>P: Thông báo yêu cầu mới
+        P->>A: Tạo công việc thủ công và liên kết ticket
+        A-->>M: Nhận công việc
+        M->>A: Bắt đầu, tick checklist, hoàn thành
+        P->>A: Hoàn tất ticket khi mọi công việc liên quan đã xong
+        A-->>T: Yêu cầu hoàn tất
+    else Có quy trình áp dụng
+        opt Quy trình cần PMS phê duyệt
+            A-->>P: Yêu cầu phê duyệt
+            alt PMS từ chối
+                P->>A: Từ chối và nhập lý do
+                A->>A: Hủy ticket và dừng quy trình
+                A-->>T: Thông báo lý do
+            else PMS đồng ý
+                P->>A: Phê duyệt
+            end
+        end
+        opt Ticket tiếp tục xử lý
+            loop Các công việc theo thứ tự đã cấu hình
+                A->>A: Tạo công việc và liên kết ticket
+                A-->>M: Thông báo giao việc
+                A-->>T: Cập nhật công việc của yêu cầu
+                M->>A: Bắt đầu
+                A->>A: Ticket chuyển sang Đang xử lý
+                M->>A: Tick đủ checklist rồi Hoàn thành
+                A->>A: Tiếp tục đúng bước đang chờ công việc này
+            end
+            A->>A: Kiểm tra mọi công việc liên quan đã hoàn thành hoặc đóng
+            Note right of A: Còn việc bổ sung thì tiếp tục chờ
+            A->>A: Ticket Hoàn tất, lần chạy hoàn tất
+            A-->>T: Thông báo hoàn tất
+            A-->>P: Thông báo kết quả
+        end
+    end

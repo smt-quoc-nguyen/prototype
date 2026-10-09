@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor P as PMS
+    participant B as Quy trình xử lý
+    participant A as Ứng dụng
+    participant D as Dữ liệu trình duyệt
+    P->>B: Chọn loại ticket, bật/tắt phê duyệt và sắp xếp các bước
+    alt Chạy thử quy trình
+        B->>A: Tạo yêu cầu mẫu trong phiên thử riêng
+        P->>A: Thử duyệt, bắt đầu và hoàn tất công việc
+        A-->>B: Hiển thị tiến độ, nhánh được chọn và thông báo mẫu
+        Note over B,D: Không lưu ticket hoặc công việc thử vào dữ liệu đang sử dụng
+    else Lưu bản nháp
+        B->>A: Lưu cấu hình đang chỉnh
+        A->>D: Lưu bản nháp
+        A-->>B: Đã lưu bản nháp
+        Note over B,D: Quy trình đã xuất bản vẫn tiếp tục áp dụng
+    else Xuất bản quy trình
+        B->>A: Kiểm tra cấu hình và loại ticket áp dụng
+        A->>D: Lưu phiên bản đang áp dụng
+        A-->>B: Quy trình đã được xuất bản
+        Note over B,D: Mỗi loại ticket chỉ có một quy trình đang áp dụng
+    end
+    Note over A,D: Ticket đang xử lý giữ bản chụp quy trình ban đầu
